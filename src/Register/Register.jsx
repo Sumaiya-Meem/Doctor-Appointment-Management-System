@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import useRegister from "../hooks/useRegister";
 import { FaUser, FaEnvelope, FaLock, FaStethoscope, FaCamera, FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
   const [role, setRole] = useState("patient");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
 
@@ -26,6 +28,7 @@ const Register = () => {
         console.log("Registered:", res);
         toast.success("Account created successful!");
         reset();
+        navigate('/');
       },
       onError: (err) => {
         console.error("Error:", err);
