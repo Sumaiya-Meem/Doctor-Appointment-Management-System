@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 my-8"></div>
+        <div className="border-t border-[#d9d9db] my-8"></div>
 
         {/* Newsletter Section */}
         <div className="mt-10 flex flex-col md:flex-row justify-between ">

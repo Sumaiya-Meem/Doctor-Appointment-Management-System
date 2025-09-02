@@ -67,7 +67,7 @@ const Header = () => {
 
           <div className="hidden md:flex items-center space-x-4">
             <NavLink
-              to=""
+              to="/login"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
@@ -97,7 +97,7 @@ const Header = () => {
               <div className="pt-4  border-gray-200">
                 
                 <NavLink
-                  to=""
+                  to="/login"
                   className={({ isActive, isPending }) =>
                     isPending
                       ? "pending"
