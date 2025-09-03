@@ -68,7 +68,8 @@ npm install
 
 npm start
 
-📁 Project Structure
+### 📁 Project Structure
+
 text
 src/
 ├── assets/                 # Static assets (images, icons, etc.)
@@ -86,7 +87,7 @@ src/
 └── Routes/                 # Application routing
     └── Routes.jsx          # Main router component
 
-🔧 Build with Vite
+### 🔧 Build with Vite
 This project uses Vite as its build tool, which provides:
 
 ⚡️ Lightning fast cold server start
@@ -97,7 +98,7 @@ This project uses Vite as its build tool, which provides:
 
 📦 Optimized build
 
-## 🔮 Future Enhancements
+### 🔮 Future Enhancements
 📧 Email notifications for appointments
 
 📅 Advanced calendar integration
