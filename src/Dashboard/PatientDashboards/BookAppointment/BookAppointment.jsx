@@ -20,7 +20,7 @@ const BookAppointment = () => {
       return toast.error("Please select a date");
     }
 
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
     if (!token) {
       return toast.error("You must be logged in to book an appointment");
     }
@@ -28,29 +28,26 @@ const BookAppointment = () => {
     try {
       setIsSubmitting(true);
 
-      await axiosInstance.post("/appointments",{doctorId,
-          date: selectedDate.toISOString().split("T")[0],
-        },
+      await axiosInstance.post(
+        "/appointments",
+        { doctorId, date: selectedDate.toISOString() },
         {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
       toast.success("Your appointment has been booked successfully!");
       setSuccess(true);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error booking appointment:", error);
       if (error.response && error.response.status === 401) {
         toast.error("Unauthorized. Please log in again.");
-      } 
-      else {
+      } else {
         toast.error("Failed to book appointment. Please try again.");
       }
-    } 
-    finally {
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -83,7 +80,10 @@ const BookAppointment = () => {
                 onChange={(date) => setSelectedDate(date)}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-600"
                 minDate={new Date()}
-                dateFormat="yyyy-MM-dd"
+                showTimeSelect 
+                timeFormat="HH:mm" 
+                timeIntervals={30} 
+                dateFormat="yyyy-MM-dd h:mm aa" 
               />
             </div>
 

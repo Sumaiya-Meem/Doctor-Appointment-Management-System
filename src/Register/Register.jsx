@@ -28,7 +28,7 @@ const Register = () => {
         console.log("Registered:", res);
         toast.success("Account created successful!");
         reset();
-        navigate('/');
+        navigate('/login');
       },
       onError: (err) => {
         console.error("Error:", err);

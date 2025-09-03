@@ -22,10 +22,10 @@ const MyAppointments = () => {
     }
 
     try {
-      const params = { 
-                  page: currentPage, 
-                  limit: 3 
-                 };
+      const params = {
+        page: currentPage,
+        limit: 3,
+      };
       if (statusFilter) params.status = statusFilter;
 
       const response = await axiosInstance.get("/appointments/patient", {
@@ -37,12 +37,10 @@ const MyAppointments = () => {
 
       setAppointments(response.data.data);
       setTotalPages(response.data.totalPages);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error fetching appointments:", error);
       toast.error("Failed to load appointments");
-    } 
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -73,12 +71,10 @@ const MyAppointments = () => {
       );
       toast.success("Appointment cancelled successfully");
       fetchAppointments();
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error cancelling appointment:", error);
       toast.error("Failed to cancel appointment");
-    } 
-    finally {
+    } finally {
       closeCancelDialog();
     }
   };
@@ -216,15 +212,13 @@ const MyAppointments = () => {
             <i className="fas fa-user-md mr-3"></i>
             Doctor List
           </button>
-          <button
-            className="w-full text-left py-3 px-6 flex items-center bg-purple-900 border-l-4 border-white"
-          >
+          <button className="w-full text-left py-3 px-6 flex items-center bg-purple-900 border-l-4 border-white">
             <i className="fas fa-calendar-check mr-3"></i>
             My Appointments
           </button>
         </nav>
       </div>
-      
+
       {/* Main Content */}
       <div className="flex-1 p-8">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">
@@ -282,14 +276,17 @@ const MyAppointments = () => {
                   <p className="text-gray-500 capitalize">
                     {data.doctor.specialization}
                   </p>
-                  <p className="mt-2 text-gray-600">
+                  <p>
                     Date:{" "}
-                    {new Date(data.date).toLocaleDateString("en-GB", {
+                    {new Date(data.date).toLocaleString("en-GB", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
                     })}
                   </p>
+
                   <div className="mt-2">
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -336,7 +333,7 @@ const MyAppointments = () => {
                 <i className="fas fa-times"></i>
               </button>
             </div>
-            
+
             <div className="mb-6">
               <p className="text-gray-600 mb-2">
                 Are you sure you want to cancel your appointment with{" "}
@@ -354,11 +351,13 @@ const MyAppointments = () => {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
                     }
                   )}
               </p>
             </div>
-            
+
             <div className="flex justify-end space-x-3">
               <button
                 onClick={closeCancelDialog}
