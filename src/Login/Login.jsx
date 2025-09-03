@@ -32,6 +32,7 @@ const Login = () => {
       }
 
       // Save user info in localStorage
+       localStorage.setItem("token", res.data.token);
        localStorage.setItem('user', JSON.stringify(userData));
         console.log("Login successful:", res);
         toast.success("Login successful!");

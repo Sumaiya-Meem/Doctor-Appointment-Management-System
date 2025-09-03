@@ -9,6 +9,8 @@ import Register from "../Register/Register";
 import Contact from "../Home/Contact/Contact";
 import DoctorDashboard from "../Dashboard/DoctorDashboards/DoctorDashboard/DoctorDashboard";
 import PatientDashboard from "../Dashboard/PatientDashboards/PatientDashboard/PatientDashboard";
+import BookAppointment from "../Dashboard/PatientDashboards/BookAppointment/BookAppointment";
+import MyAppointments from "../Dashboard/PatientDashboards/MyAppointments/MyAppointments";
 
 
   
@@ -32,6 +34,14 @@ import PatientDashboard from "../Dashboard/PatientDashboards/PatientDashboard/Pa
         {
           path: "/patient/dashboard",
           element: <PatientDashboard></PatientDashboard>,
+        },
+        { 
+          path: "/book-appointment/:doctorId", 
+          element:<BookAppointment></BookAppointment>
+        },
+        {
+          path: "/myAppointment",
+          element: <MyAppointments></MyAppointments>,
         },
         {
           path: "/doctor/dashboard",

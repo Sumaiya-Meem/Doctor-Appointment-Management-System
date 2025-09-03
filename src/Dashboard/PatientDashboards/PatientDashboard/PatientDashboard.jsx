@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../../../utils/axios";
 import img from "../../../assets/images/img.jpg";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const PatientDashboard = () => {
   const [activeTab, setActiveTab] = useState("doctors");
@@ -11,8 +12,9 @@ const PatientDashboard = () => {
   const [selectedSpecialization, setSelectedSpecialization] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const navigate = useNavigate();
 
-  // Fetch specializations 
+  // Fetch specializations
   useEffect(() => {
     const fetchSpecializations = async () => {
       try {
@@ -47,8 +49,7 @@ const PatientDashboard = () => {
         const response = await axiosInstance.get("/doctors", { params });
         setDoctors(response.data.data);
         setTotalPages(response.data.totalPages);
-      } 
-      catch (error) {
+      } catch (error) {
         console.error("Error fetching doctors:", error);
       }
     };
@@ -58,18 +59,18 @@ const PatientDashboard = () => {
     }
   }, [activeTab, currentPage, searchTerm, selectedSpecialization]);
 
-  const handleSearchChange = (e) =>{
+  const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1); // Reset first page on new search
   };
 
-  const handleSpecializationChange = (e) =>{
+  const handleSpecializationChange = (e) => {
     setSelectedSpecialization(e.target.value);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page) => {
-    if(page >= 1 && page <= totalPages){
+    if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
@@ -110,7 +111,7 @@ const PatientDashboard = () => {
     }
 
     // ellipsis after first page if needed
-    if(startPage > 2) {
+    if (startPage > 2) {
       pages.push(
         <span key="ellipsis1" className="px-2">
           ...
@@ -119,7 +120,7 @@ const PatientDashboard = () => {
     }
 
     // middle pages
-    for(let i=startPage;i<=endPage;i++) {
+    for (let i = startPage; i <= endPage; i++) {
       pages.push(
         <button
           type="button"
@@ -137,7 +138,7 @@ const PatientDashboard = () => {
     }
 
     // ellipsis before last page if needed
-    if(endPage<totalPages-1) {
+    if (endPage < totalPages - 1) {
       pages.push(
         <span key="ellipsis2" className="px-2">
           ...
@@ -146,7 +147,7 @@ const PatientDashboard = () => {
     }
 
     // show last page if there is more than one page
-    if(totalPages > 1){
+    if (totalPages > 1) {
       pages.push(
         <button
           type="button"
@@ -226,7 +227,7 @@ const PatientDashboard = () => {
         {activeTab === "doctors" ? (
           <>
             <h1 className="text-2xl font-bold text-gray-800 mb-6">
-              Find a Doctor
+              Find Your Doctor !
             </h1>
 
             {/* search and filter section */}
@@ -234,7 +235,7 @@ const PatientDashboard = () => {
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1 relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaSearch className="text-gray-400" /> 
+                    <FaSearch className="text-gray-400" />
                   </div>
                   <input
                     type="text"
@@ -302,9 +303,12 @@ const PatientDashboard = () => {
                         </p>
 
                         <button
-                          className="mt-4 w-full
-                        bg-[#326fd2] font-bold
-                           text-white py-2 rounded-lg transition-colors duration-300"
+                          onClick={() =>
+                            navigate(`/book-appointment/${doctor.id}`, {
+                              state: doctor,
+                            })
+                          }
+                          className="mt-4 w-full bg-[#326fd2] font-bold text-white py-2 rounded-lg transition-colors duration-300"
                         >
                           Book Appointment
                         </button>
@@ -313,7 +317,7 @@ const PatientDashboard = () => {
                   ))}
                 </div>
 
-            {/* Pagination */}
+                {/* Pagination */}
                 {totalPages > 1 && renderPagination()}
               </>
             ) : (
@@ -332,6 +336,7 @@ const PatientDashboard = () => {
           <div className="bg-white rounded-lg shadow p-8 text-center">
             <i className="fas fa-calendar-check text-5xl text-purple-400 mb-4"></i>
             <h3 className="text-xl font-semibold text-gray-700">
+                  
               My Appointments
             </h3>
           </div>
