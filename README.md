@@ -68,26 +68,9 @@ npm install
 
 npm start
 
-### 📁 Project Structure
 
-text
-src/
-├── assets/                 # Static assets (images, icons, etc.)
-├── components/             # Reusable UI components
-│   ├── Footer/             # Footer component
-│   ├── Header/             # Header component
-│   ├── Dashboard/          # Dashboard components
-│   └── Home/               # Home page components
-├── hooks/                  # Custom React hooks
-│   ├── useLogin.js         # Authentication hook
-│   └── useRegister.js      # Registration hook
-├── Login/                  # Login page components
-├── MainLayout/             # Main layout component
-├── Register/               # Registration page components
-└── Routes/                 # Application routing
-    └── Routes.jsx          # Main router component
+🔧 Build with Vite
 
-### 🔧 Build with Vite
 This project uses Vite as its build tool, which provides:
 
 ⚡️ Lightning fast cold server start
@@ -98,7 +81,8 @@ This project uses Vite as its build tool, which provides:
 
 📦 Optimized build
 
-### 🔮 Future Enhancements
+🔮 Future Enhancements
+
 📧 Email notifications for appointments
 
 📅 Advanced calendar integration
@@ -110,3 +94,21 @@ This project uses Vite as its build tool, which provides:
 📊 Analytics dashboard
 
 🎨 Theme customization options
+
+📁 Project Structure
+
+src/
+├── assets/ # Static assets (images, icons, etc.)
+├── components/ # Reusable UI components
+│ ├── Footer/ # Footer component
+│ ├── Header/ # Header component
+│ ├── Dashboard/ # Dashboard components
+│ └── Home/ # Home page components
+├── hooks/ # Custom React hooks
+│ ├── useLogin.js # Authentication hook
+│ └── useRegister.js # Registration hook
+├── Login/ # Login page components
+├── MainLayout/ # Main layout component
+├── Register/ # Registration page components
+└── Routes/ # Application routing
+└── Routes.jsx # Main router component
