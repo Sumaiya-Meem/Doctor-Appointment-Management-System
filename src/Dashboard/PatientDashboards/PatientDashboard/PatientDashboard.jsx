@@ -3,8 +3,10 @@ import axiosInstance from "../../../utils/axios";
 import img from "../../../assets/images/img.jpg";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import MyAppointments from "../MyAppointments/MyAppointments";
 
 const PatientDashboard = () => {
+  // eslint-disable-next-line no-unused-vars
   const [activeTab, setActiveTab] = useState("doctors");
   const [doctors, setDoctors] = useState([]);
   const [specializations, setSpecializations] = useState([]);
@@ -198,7 +200,7 @@ const PatientDashboard = () => {
         </div>
         <nav className="mt-6">
           <button
-            onClick={() => setActiveTab("doctors")}
+            onClick={() => navigate("/patient/dashboard")}
             className={`w-full text-left py-3 px-6 flex items-center ${
               activeTab === "doctors"
                 ? "bg-purple-900 border-l-4 border-white"
@@ -209,7 +211,9 @@ const PatientDashboard = () => {
             Doctor List
           </button>
           <button
-            onClick={() => setActiveTab("appointments")}
+            onClick={() => 
+                  navigate("/patient/appointments")
+            }
             className={`w-full text-left py-3 px-6 flex items-center ${
               activeTab === "appointments"
                 ? "bg-purple-900 border-l-4 border-white"
@@ -333,13 +337,9 @@ const PatientDashboard = () => {
             )}
           </>
         ) : (
-          <div className="bg-white rounded-lg shadow p-8 text-center">
-            <i className="fas fa-calendar-check text-5xl text-purple-400 mb-4"></i>
-            <h3 className="text-xl font-semibold text-gray-700">
-                  
-              My Appointments
-            </h3>
-          </div>
+          
+            <MyAppointments> </MyAppointments>
+           
         )}
       </div>
     </div>

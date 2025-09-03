@@ -109,7 +109,7 @@ const BookAppointment = () => {
               Appointment booked successfully!
             </p>
             <button
-              onClick={() => navigate("/myAppointment")}
+              onClick={() => navigate("/patient/appointments")}
               className="px-4 py-2 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-600"
             >
               Show All Your Appointment

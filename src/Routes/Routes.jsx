@@ -40,7 +40,7 @@ import MyAppointments from "../Dashboard/PatientDashboards/MyAppointments/MyAppo
           element:<BookAppointment></BookAppointment>
         },
         {
-          path: "/myAppointment",
+          path: "/patient/appointments",
           element: <MyAppointments></MyAppointments>,
         },
         {
