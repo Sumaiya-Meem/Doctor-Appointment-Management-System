@@ -72,8 +72,20 @@ const Header = () => {
       >
         Contact Us
       </NavLink>
-    </>
-  );
+
+    {user && (
+      <NavLink
+        to={user.role === "DOCTOR" ? "/doctor/dashboard" : "/patient/dashboard"}
+        className={({ isActive }) =>
+          isActive ? "text-white font-bold underline" : "text-white hover:text-purple-200"
+        }
+        onClick={() => setIsMenuOpen(false)}
+      >
+        Dashboard
+      </NavLink>
+     )}
+  </>
+);
 
   return (
     <header className="sticky top-0 z-50 bg-[#8c3bdb] shadow-md">

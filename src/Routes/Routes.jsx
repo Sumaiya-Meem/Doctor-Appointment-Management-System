@@ -6,6 +6,9 @@ import MainLayout from "../MainLayout/MainLayout";
 import About from "../Home/About/About";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import Contact from "../Home/Contact/Contact";
+import DoctorDashboard from "../Dashboard/DoctorDashboards/DoctorDashboard/DoctorDashboard";
+import PatientDashboard from "../Dashboard/PatientDashboards/PatientDashboard/PatientDashboard";
 
 
   
@@ -22,6 +25,21 @@ import Register from "../Register/Register";
           path: "/about",
           element: <About></About>,
         },
+        {
+          path: "/contact",
+          element: <Contact></Contact>,
+        },
+        {
+          path: "/patient/dashboard",
+          element: <PatientDashboard></PatientDashboard>,
+        },
+        {
+          path: "/doctor/dashboard",
+          element: <DoctorDashboard></DoctorDashboard>,
+        },
+
+
+
         {
           path: "/login",
           element: <Login></Login>,
